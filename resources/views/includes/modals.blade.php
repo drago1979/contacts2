@@ -31,6 +31,7 @@
                                 id="js-modal-delete-existing-record-delete-button"
                                 class="btn btn-primary btn-flat m-b-30 m-t-30"
                                 data-markupid=""
+                                data-bind="click: deleteDbRecord"
                         >
                             Delete
                         </button>

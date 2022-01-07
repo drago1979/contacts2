@@ -13,6 +13,13 @@ class Contact extends Model
 
     protected $with = ['phoneNumbers:id,contact_id,description,number'];
 
+    protected $appends = ['delete_url'];
+
+
+    public function getDeleteUrlAttribute()
+    {
+        return $this->attributes['delete_url'] = route('contacts.delete', [$this->id]);
+    }
 
     // Relationships
     public function phoneNumbers()
