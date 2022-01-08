@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Phone numbers
         Route::delete('/contacts/{contact}/phone_numbers/{phone_number}', [App\Http\Controllers\PhoneNumberController::class, 'destroy'])->name('phone_numbers.delete');
         // Contacts & phone numbers - store & update
-        Route::post('/contacts_and_phone_numbers', [\App\Http\Controllers\ContactPhoneController::class, 'getPayload'])->name('contacts_and_numbers');
+        Route::post('/contacts_and_phone_numbers', [\App\Http\Controllers\ContactPhoneController::class, 'storeUpdate'])->name('contacts_and_numbers');
     });
 
 });

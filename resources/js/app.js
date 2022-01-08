@@ -205,13 +205,12 @@ function contactsViewModel() {
             contacts: ko.toJS(self.contacts)
         };
 
-
         $.post({
             url: $('#form').attr('action'),
             data: payload,
             success: function () {
-
                 alert('If you made any changes - they are saved.');
+                location.reload();
             },
             error: function () {
                 alert('An error occurred. Please try again later or contact our support.')
