@@ -159,7 +159,7 @@ function contactsViewModel() {
     */
     self.removeContact = function (item) {
         self.contacts.remove(item);
-        self.informOnDeletion();
+        self.informOnDeletionAndResetVariable();
     }
 
     /* Delete number from UI
@@ -177,13 +177,13 @@ function contactsViewModel() {
         }
 
         self.contacts()[contactIndex].phone_numbers.remove(item);
-        self.informOnDeletion();
+        self.informOnDeletionAndResetVariable();
     }
 
     /* Inform the user when record is deleted. Only for records that
      * exist in DB. Reset the "RecordForDeletion" variable.
      */
-    self.informOnDeletion = function () {
+    self.informOnDeletionAndResetVariable = function () {
         setTimeout(function () {
             if (RecordForDeletion.get().exists() === true) {
                 alert('Record deleted.');

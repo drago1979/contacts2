@@ -11,9 +11,7 @@ class ContactPhoneController extends Controller
 
     public function storeUpdate(ContactPhoneRequest $request)
     {
-        $contacts = $request->input('contacts');
-
-        foreach ($contacts as $contact) {
+        foreach ($request->input('contacts') as $contact) {
 
             // Perform update for existing contacts:
             if ($contact['exists'] === 'true') {
@@ -31,7 +29,7 @@ class ContactPhoneController extends Controller
     {
         $dbContact = Contact::find($contact['id']);
 
-        // If existing contact has no phone numbers, we will skip updateOrCreate
+        // UpdateOrCreate will be performed only if existing contact has a phone number
         if (isset($contact['phone_numbers'])) {
 
             foreach ($contact['phone_numbers'] as $phoneNumber) {
@@ -50,8 +48,9 @@ class ContactPhoneController extends Controller
     {
         $dbContact = Contact::create($contact);
 
-        // If no numbers were added to new contact, we will skip "create" numbers
+        // Create numbers will be performed only if contact has a phone number attached
         if (isset($contact['phone_numbers'])) {
+
             foreach ($contact['phone_numbers'] as $phoneNumber) {
 
                 $dbContact->phoneNumbers()->create($phoneNumber);
