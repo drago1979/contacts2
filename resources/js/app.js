@@ -9,14 +9,11 @@
 
 /* Adding "exists-flag" to all contacts & numbers retrieved from DB; This flag
 *  will be used by the backend to resolve if record needs to be created
-*  or updated (2 code blocks)
+*  or updated
 */
 contactsDb.map(function (contact) {
     contact.exists = true;
-});
-
-contactsDb.forEach(function (item, index) {
-    item['phone_numbers'].map(function (phone_number) {
+    contact['phone_numbers'].map(function (phone_number) {
         phone_number.exists = true
     })
 });
@@ -25,7 +22,6 @@ contactsDb.forEach(function (item, index) {
 /* This variable-Model is used to initialize ViewModel with values
 */
 let contactsModel = ko.mapping.fromJS(contactsDb);
-
 
 // --------------------------------------------------------
 // KNOCKOUT JS VIEW-MODEL
@@ -105,7 +101,6 @@ function contactsViewModel() {
             },
             set: function (value) {
                 record = value;
-                console.log(record);
             },
         }
     }());
@@ -130,6 +125,7 @@ function contactsViewModel() {
     /* Delete existing records from the DB
     */
     self.deleteDbRecord = function () {
+
         $.ajax({
             url: RecordForDeletion.get().delete_url(),
             type: 'post',

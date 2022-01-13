@@ -16,16 +16,13 @@
 
 
             <div class="modal-body">
-
-                <!-- Form`s "action" attribute is added by custom JS (passUrlAndMarkupElementIdToExistingRecordDeleteModal() ) -->
+                <!-- Form data sent using AJAX -->
                 <form id="js-delete-existing-record-form" class="login-form d-flex justify-content-evenly"
                       method="POST"
-                      action=""
                 >
                 @method('DELETE')
                 @csrf
 
-                <!-- Button`s "data-markupid" attribute is added by custom JS (passUrlAndMarkupElementIdToExistingRecordDeleteModal() ) -->
                     <div class="text-center mt-2">
                         <button type="submit"
                                 id="js-modal-delete-existing-record-delete-button"

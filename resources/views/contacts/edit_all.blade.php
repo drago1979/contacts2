@@ -47,9 +47,8 @@
                   id="form"
                   data-bind="submit: handleSave"
             >
-                @csrf
 
-                <div id="js-contacts-wrapper" data-bind="foreach: contacts">
+                <div data-bind="foreach: contacts">
 
                     <!-- ONE CONTACT DATA (name & phone) -->
 
@@ -93,57 +92,55 @@
 
                         </div>
 
-                        {{--                    <!-- CONTACTS PHONE NUMBERS -->--}}
+                        <!-- CONTACTS PHONE NUMBERS -->
                         <div class="col-lg-7">
 
-                            <div data-bind="if: typeof phone_numbers !== 'undefined'">
 
-                                <div id="js-contact_id__phones"
-                                     data-contactid=""
-                                     data-bind="foreach: phone_numbers"
-                                >
+                            <div id="js-contact_id__phones"
+                                 data-contactid=""
+                                 data-bind="foreach: phone_numbers"
+                            >
 
-                                    <!-- CONTACTS SINGLE PHONE NUMBER -->
-                                    <div id="contact_id__phone_number_id_"
-                                         class="row">
+                                <!-- CONTACTS SINGLE PHONE NUMBER -->
+                                <div id="contact_id__phone_number_id_"
+                                     class="row">
 
-                                        <div
-                                            class="{{ Auth::user()->can('update-delete-store') ? 'col-lg-5' : 'col-lg-6' }}">
+                                    <div
+                                        class="{{ Auth::user()->can('update-delete-store') ? 'col-lg-5' : 'col-lg-6' }}">
 
-                                            <input class="mb-2"
-                                                   type="text"
-                                                   value=""
-                                                   data-bind="value: description"
-                                                   required
-                                            >
-                                        </div>
-
-                                        <div class="{{ Auth::user()->can('update-delete-store') ? 'col-lg-5' : 'col-lg-6' }}">
-                                            <input class="mb-2"
-                                                   type="text"
-                                                   value=""
-                                                   data-bind="value: number"
-                                                   required
-                                            >
-                                        </div>
-
-                                        <!-- DELETE SINGLE PHONE NUMBER BUTTON -->
-                                        @can('update-delete-store')
-
-                                            <div class="col-lg-2">
-
-                                                <button type="button"
-                                                        class="btn btn-link c-btn-link link-danger"
-                                                        data-bind="click: $root.chooseDeletionPath"
-                                                >
-                                                    Delete
-                                                </button>
-                                            </div>
-                                        @endcan
-
+                                        <input class="mb-2"
+                                               type="text"
+                                               value=""
+                                               data-bind="value: description"
+                                               required
+                                        >
                                     </div>
-                                </div>
 
+                                    <div
+                                        class="{{ Auth::user()->can('update-delete-store') ? 'col-lg-5' : 'col-lg-6' }}">
+                                        <input class="mb-2"
+                                               type="text"
+                                               value=""
+                                               data-bind="value: number"
+                                               required
+                                        >
+                                    </div>
+
+                                    <!-- DELETE SINGLE PHONE NUMBER BUTTON -->
+                                    @can('update-delete-store')
+
+                                        <div class="col-lg-2">
+
+                                            <button type="button"
+                                                    class="btn btn-link c-btn-link link-danger"
+                                                    data-bind="click: $root.chooseDeletionPath"
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    @endcan
+
+                                </div>
                             </div>
 
                             <!-- ADD NEW PHONE NUMBER (to existing contact) BUTTON -->

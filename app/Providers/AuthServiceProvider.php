@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('update-delete-store', function (User $user) {
-            return $user->is_admin === true;
+            return $user->is_admin;
         });
 
     }

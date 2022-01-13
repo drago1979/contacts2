@@ -43,7 +43,6 @@ Route::group(['middleware' => 'auth'], function () {
     | All authenticated users can access:
      */
     // Contacts
-    Route::get('/contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts.all');
     Route::get('/contacts/edit_all', [App\Http\Controllers\ContactController::class, 'editAll'])->name('contacts.edit_all');
 
     /*
